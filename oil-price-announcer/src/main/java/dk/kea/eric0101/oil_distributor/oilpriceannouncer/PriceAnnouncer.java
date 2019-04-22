@@ -17,19 +17,19 @@ public class PriceAnnouncer {
 
 	private final double BASE_PRICE = 50d;
 	private final Random random = new Random();
-	
+
 	@Autowired
 	JmsTemplate jmsTemplate;
-	
-	//create queue on startup.
+
+	// create queue on startup.
 	@Autowired
 	Queue queue;
 
 	@GetMapping("/newprice")
-	public double priceChange() {
+	public double changePrice() {
 		double newPriceMessage = BASE_PRICE + (random.nextDouble() * 25); // Prices range from 50 to 75
 
-		//publish message to ActiveMQQqueue/topic
+		// publish message to ActiveMQQqueue/topic
 		jmsTemplate.convertAndSend(queue, newPriceMessage);
 
 		return newPriceMessage;
@@ -39,7 +39,7 @@ public class PriceAnnouncer {
 	public double priceChange(@PathVariable("randomizerrange") final String ranRange) {
 		double newPriceMessage = random.nextDouble() * Double.parseDouble(ranRange);
 
-		//publish message to ActiveMQQqueue/topic
+		// publish message to ActiveMQQqueue/topic
 		jmsTemplate.convertAndSend(queue, newPriceMessage);
 
 		return newPriceMessage;
