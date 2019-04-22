@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PriceListener {
 
-	@JmsListener(destination = "oil.price.queue")
+	@JmsListener(destination = "oil.price.topic")
 	private void receiveMessage(double oilPriceChange) throws JMSException {
 		System.out.println("The new oil price received from the messagequeue was: $" + oilPriceChange + "!");
 		PriceManager.gasPrice = oilPriceChange * (1 + PriceManager.profitMargin);

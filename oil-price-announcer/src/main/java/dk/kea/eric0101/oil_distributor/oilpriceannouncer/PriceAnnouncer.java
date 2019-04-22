@@ -2,7 +2,7 @@ package dk.kea.eric0101.oil_distributor.oilpriceannouncer;
 
 import java.util.Random;
 
-import javax.jms.Queue;
+import javax.jms.Topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
@@ -21,16 +21,16 @@ public class PriceAnnouncer {
 	@Autowired
 	JmsTemplate jmsTemplate;
 
-	// create queue on startup.
+	// create topic on startup.
 	@Autowired
-	Queue queue;
+	Topic topic;
 
 	@GetMapping("/newprice")
 	public double changePrice() {
 		double newPriceMessage = BASE_PRICE + (random.nextDouble() * 25); // Prices range from 50 to 75
 
 		// publish message to ActiveMQQqueue/topic
-		jmsTemplate.convertAndSend(queue, newPriceMessage);
+		jmsTemplate.convertAndSend(topic, newPriceMessage);
 
 		return newPriceMessage;
 	}
@@ -40,7 +40,7 @@ public class PriceAnnouncer {
 		double newPriceMessage = random.nextDouble() * Double.parseDouble(ranRange);
 
 		// publish message to ActiveMQQqueue/topic
-		jmsTemplate.convertAndSend(queue, newPriceMessage);
+		jmsTemplate.convertAndSend(topic, newPriceMessage);
 
 		return newPriceMessage;
 	}
