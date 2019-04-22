@@ -10,23 +10,20 @@ import java.util.Date;
 @RestController
 @RequestMapping("/pricemanager")
 public class PriceManager {
-	
+
 	public static final double DEFAULT_PRICE = 50d;
 	public static double gasPrice = DEFAULT_PRICE;
 	public static float profitMargin = 0.1f;
 	public static Date changedAt;
 
-
-
-
 	@GetMapping("/price")
 	public double getPrice() {
 		return gasPrice;
 	}
-	
+
 	@GetMapping("/profitmargin")
 	public String getProfitMargin() {
-		String profitStr = "Profit margin = " + (this.profitMargin * 100) + " %";
+		String profitStr = "Profit margin = " + (this.profitMargin * 100) + "%";
 		return profitStr;
 	}
 
