@@ -12,9 +12,9 @@ Mini Enterprise Integration (EI) project, build with [Spring Boot](http://projec
 
 ## Technologies used
 
--[Java Message Service](https://www.oracle.com/technetwork/articles/java/introjms-1577110.html)
--[ActiveMQ](http://activemq.apache.org/)
--[Spring Boot](https://spring.io/projects/spring-boot)
+- [Java Message Service](https://www.oracle.com/technetwork/articles/java/introjms-1577110.html)
+- [ActiveMQ](http://activemq.apache.org/)
+- [Spring Boot](https://spring.io/projects/spring-boot)
 
 ## Requirements
 
